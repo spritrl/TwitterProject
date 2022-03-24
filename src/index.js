@@ -8,6 +8,8 @@ import { UserContextProvider } from './context/userContext';
 import firebase from 'firebase/compat/app';
 import 'firebase/compat/firestore';
 import 'firebase/compat/auth';
+import { BrowserRouter } from "react-router-dom";
+import { UserContextProvider } from './context/userContext';
 
 const firebaseConfig = {
   apiKey: "AIzaSyAPcYoBvdB2yO6KBgQTJuNZDvaH2iqurDM",
