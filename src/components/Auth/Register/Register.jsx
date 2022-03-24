@@ -3,7 +3,7 @@ import React from 'react'
 import LockIcon from '@mui/icons-material/Lock';
 import FormControl from '@mui/material/FormControl';
 
-const Login = () => {
+const Register = () => {
 
   const paperStyle = {
       padding: 20,
@@ -15,28 +15,33 @@ const Login = () => {
       backgroundColor:'#2ddead'
   }
   const textField = {
-    margin: "10px 0"
+    padding: "10px 0"
   }
+  
+ 
   return (
     <Grid>
         <Paper elevation={10} style={paperStyle}>
             <Grid align='center'>
                 <Avatar style={avatarStyle}><LockIcon/></Avatar>
-                <h2>Sign in</h2>
+                <h2>Register</h2>
             </Grid>
                    {/* <FormControl>
                     <InputLabel htmlFor="my-input">Email address</InputLabel>
                     <Input id="my-input" aria-describedby="my-helper-text" />
                     <FormHelperText id="my-helper-text">We'll never share your email.</FormHelperText>
                 </FormControl> */}
-            <TextField style={textField} label='Username' placeholder='Enter mail OR username' fullWidth required/>
-            <TextField style={textField} label='Password' placeholder='Enter password' type='password' fullWidth required/>
-            <FormControlLabel control={<Checkbox  />} label="Remember me" />
-            <Button fullWidth type='submit' variant="contained">Sign in</Button>
+            <FormControl fullWidth>
+                <TextField name='username' style={textField} label='Username' placeholder='Enter mail OR username' fullWidth required/>
+                <TextField name='psw' style={textField} label='Password' placeholder='Enter password' type='password' fullWidth required/>
+                <TextField name='repeatPwd' style={textField} label='Repeat password' placeholder='Enter password' type='password' fullWidth required/>
+                {/* <FormControlLabel control={<Checkbox  />} label="Remember me" /> */}
+                <Button fullWidth type='submit' variant="contained">Sign in</Button>
+            </FormControl>
 
         </Paper>
     </Grid>
   )
 }
 
-export default Login
+export default Register
