@@ -5,6 +5,9 @@ import firebase from 'firebase/compat/app';
 import 'firebase/compat/firestore';
 import 'firebase/compat/auth';
 import TimelineView from './views/timelineView';
+import { Routes, Route, Link } from "react-router-dom";
+import Login from './components/Login/Login';
+import Hold from './components/hold/Hold';
 
 function App() {
   useEffect(() => {
@@ -18,9 +21,13 @@ function App() {
   }, []);
 
   return (
-    <div className="App">
-      <TimelineView></TimelineView>
-    </div>
+    <>
+      <Routes>
+        <Route path="/" element={<Hold />} />
+        <Route path="login" element={<Login />} />
+        <Route path="/timeline" element={<TimelineView />} />
+      </Routes>
+    </>
   );
 }
 
