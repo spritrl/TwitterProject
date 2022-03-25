@@ -1,7 +1,5 @@
 import React from 'react';
 
-import TweetTweetCard from './timlineTweetCard';
-
 const Tweet = ({ usernameInfo, textInfo }) => {
   const root = {
     display: 'flex',
