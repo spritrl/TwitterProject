@@ -1,4 +1,6 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+import { SvgIcon, Button } from "@material-ui/core";
 
 const Tweet = ({ usernameInfo, textInfo }) => {
   const root = {
@@ -25,6 +27,11 @@ const Tweet = ({ usernameInfo, textInfo }) => {
     height: 50,
     width: 50,
     marginLeft: 10,
+  };
+
+  const ppButton = {
+    margin: 0,
+    padding: 0,
   };
 
   const content = {
@@ -60,7 +67,9 @@ const Tweet = ({ usernameInfo, textInfo }) => {
   return (
     <div style={root}>
       <div style={tweetArea}>
-        <img src="https://pbs.twimg.com/profile_images/3146747625/c57128ccade4faa5f28419771a7156f0_400x400.png" style={profilePicture} />
+        <Button component={Link} to={`/profile?username=${usernameInfo}`} style={ppButton}>
+          <img src="https://pbs.twimg.com/profile_images/3146747625/c57128ccade4faa5f28419771a7156f0_400x400.png" style={profilePicture} />
+        </Button>
         <div style={content}>
           <div style={userInfo}>
             <a style={username}>{usernameInfo}</a>
