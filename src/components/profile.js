@@ -1,10 +1,14 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 
+import firebase from 'firebase/compat/app';
+import 'firebase/compat/firestore';
+import 'firebase/compat/auth';
 import { SvgIcon, Button } from "@material-ui/core";
 
 import Navbar from '../components/navbar';
 import TimelineTweetCard from './timlineTweetCard';
 import PersonalProfileCard from './personalProfileCard'
+import Tweet from './tweet';
 
 const Profile = ({ username }) => {
   const root = {
@@ -31,7 +35,6 @@ const Profile = ({ username }) => {
     fontSize: 20,
   };
 
-
   const usernameTopSection = {
     display: 'flex',
     flexDirection: 'column'
@@ -54,6 +57,28 @@ const Profile = ({ username }) => {
     borderRadius: 999,
   };
 
+  const [messageList, setMessageList] = useState([]);
+
+  useEffect(() => {
+    const db = firebase.firestore();
+    db.collection('tweet')
+      .get()
+      .then(querySnapshot => {
+        const documents = querySnapshot.docs.map(doc => doc.data())
+        return documents;
+      })
+      .then(documents => {
+        const tempList = [];
+        documents.map(element => {
+          if (element.username === username) {
+            tempList.push(element);
+          }
+        });
+        setMessageList(tempList);
+        console.warn('messageList', messageList);
+      })
+  }, []);
+
   return (
     <div style={root}>
       <div style={top}>
@@ -66,9 +91,17 @@ const Profile = ({ username }) => {
         </Button>
         <div style={usernameTopSection}>
           <a style={usernameTop}>{username}</a>
+          <a style={tweetNumber}>{messageList.length} Tweets</a>
         </div>
       </div>
       <PersonalProfileCard username={username}/>
+      {messageList.map(element => (
+        <Tweet
+          key={`${element.username}-${element.description}`}
+          usernameInfo={element.username}
+          textInfo={element.description}
+        />
+      ))}
     </div>
   );
 };
