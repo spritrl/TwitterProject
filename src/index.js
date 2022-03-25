@@ -8,17 +8,10 @@ import 'firebase/compat/firestore';
 import 'firebase/compat/auth';
 import { BrowserRouter } from "react-router-dom";
 import { UserContextProvider } from './context/userContext';
-
-const firebaseConfig = {
-  apiKey: "AIzaSyAPcYoBvdB2yO6KBgQTJuNZDvaH2iqurDM",
-  authDomain: "twitter-project-d5bb4.firebaseapp.com",
-  projectId: "twitter-project-d5bb4",
-  storageBucket: "twitter-project-d5bb4.appspot.com",
-  messagingSenderId: "730874699464",
-  appId: "1:730874699464:web:115e1f546ebf4008914ffd"
-};
+import {firebaseConfig} from "./firebase.config"
 
 firebase.initializeApp(firebaseConfig);
+
 ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>

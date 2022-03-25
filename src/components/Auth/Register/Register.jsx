@@ -1,5 +1,5 @@
 import { Avatar, Button, Checkbox, FormControlLabel, FormHelperText, Grid, Input, InputLabel, Paper, TextField } from '@mui/material'
-import React, { useRef, useState } from 'react'
+import React, { useContext, useRef, useState } from 'react'
 import LockIcon from '@mui/icons-material/Lock';
 import FormControl from '@mui/material/FormControl';
 import { UserContext } from '../../../context/userContext';
@@ -8,6 +8,9 @@ import { UserContext } from '../../../context/userContext';
 
 const Register = () => {
 
+// !Use context 
+    const {signUp} = useContext(UserContext);
+    console.log("signUp", signUp)
 // ! the style variables
   const paperStyle = {
       padding: 20,
@@ -21,24 +24,32 @@ const Register = () => {
   const textField = {
     padding: "10px 0"
   }
+// ! The useState varibale 
+  const [validation, setValidation] = useState()
+
   // ! the other variables
   const inputs = useRef([]);
   const addInputs = el => {
-      console.log(el);
       if (el && !inputs.current.includes(el) && el.tagName.toLowerCase() === 'input') {
           inputs.current.push(el)
       }
   }
 
+//   !functions
   const handelForm = (e) => {
     e.preventDefault()
-    // console.log(inputs.current[1].value);
-    if (inputs.current[1].value.lenght > 0) {
-        
+    console.log(inputs.current[1].value);
+    if (inputs.current[1].value.length || inputs.current[2].value.length < 6) {
+        setValidation("6 caracters min")
+        return;
+    } else if (inputs.current[1].value !== inputs.current[2].value) {
+        setValidation("Not the same password");
+        return;
     }
+    
   }
   
- 
+  
   return (
     <Grid>
         <Paper elevation={10} style={paperStyle}>
@@ -55,6 +66,7 @@ const Register = () => {
                 <TextField inputRef={addInputs} name='username' style={textField} label='Username' placeholder='Enter mail OR username' fullWidth required/>
                 <TextField inputRef={addInputs} name='psw' style={textField} label='Password' placeholder='Enter password' type='password' fullWidth required/>
                 <TextField inputRef={addInputs} name='repeatPwd' style={textField} label='Repeat password' placeholder='Enter password' type='password' fullWidth required/>
+                <p style={{color:'red'}}>{validation}</p>
                 {/* <FormControlLabel control={<Checkbox  />} label="Remember me" /> */}
                 <Button fullWidth type='submit' variant="contained">Sign in</Button>
             </form>
