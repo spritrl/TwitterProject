@@ -1,6 +1,7 @@
 import React from 'react';
 
 import TimelineTweetCard from './timlineTweetCard';
+import Tweet from './tweet';
 
 const Timeline = ({ route, navigation }) => {
   const root = {
@@ -18,6 +19,7 @@ const Timeline = ({ route, navigation }) => {
   return (
     <div style={root}>
       <TimelineTweetCard />
+      <Tweet usernameInfo={'test'} textInfo={'content info'} />
     </div>
   );
 };

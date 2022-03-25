@@ -22,12 +22,14 @@ const TimelineTweetCard = ({ route, navigation }) => {
   const tweetArea = {
     display: 'flex',
     flexDirection: 'row',
+    width: '90%',
   };
 
   const textArea = {
     marginLeft: 10,
     borderBottom: 'solid red 0px',
     color: 'white',
+    width: '100%',
     fontWeight: 'bold',
     fontSize: 20,
   };
