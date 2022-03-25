@@ -1,5 +1,9 @@
 import React, { useEffect, useState } from 'react';
-
+import {
+  BrowserRouter as Router,
+  Link,
+  useLocation
+} from "react-router-dom";
 import firebase from 'firebase/compat/app';
 import 'firebase/compat/firestore';
 import 'firebase/compat/auth';
@@ -10,7 +14,7 @@ import TimelineTweetCard from './timlineTweetCard';
 import PersonalProfileCard from './personalProfileCard'
 import Tweet from './tweet';
 
-const Profile = ({ username }) => {
+const Profile = () => {
   const root = {
     display: 'flex',
     flexDirection: 'column',
@@ -58,6 +62,14 @@ const Profile = ({ username }) => {
   };
 
   const [messageList, setMessageList] = useState([]);
+
+  const useQuery = () => {
+    const { search } = useLocation();
+    return React.useMemo(() => new URLSearchParams(search), [search]);
+  };
+
+  let query = useQuery();
+  let username = query.get("username");
 
   useEffect(() => {
     const db = firebase.firestore();

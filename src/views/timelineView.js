@@ -3,7 +3,8 @@ import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Navbar from '../components/navbar';
 import Timeline from '../components/timeline';
-const TimelineView = ({ route, navigation }) => {
+
+const TimelineView = ({ route, navigation, username="toto" }) => {
 
   return (
     <div style={{
@@ -15,7 +16,7 @@ const TimelineView = ({ route, navigation }) => {
       marginLeft: 'auto',
       marginRight: 'auto',
     }}>
-      <Navbar />
+      <Navbar username={username} />
       <Timeline />
     </div >
   );
