@@ -3,7 +3,7 @@ import React from 'react';
 import Navbar from '../components/navbar';
 import Profile from '../components/profile';
 
-const ProfileView = ({ route, navigation }) => {
+const ProfileView = ({ route, navigation, username="toto" }) => {
   const root = {
     display: 'flex',
     flexDirection: 'row',
@@ -15,8 +15,8 @@ const ProfileView = ({ route, navigation }) => {
   }
   return (
     <div style={root}>
-      <Navbar />
-      <Profile username={"toto"}/>
+      <Navbar username={username} />
+      <Profile />
     </div >
   );
 };
