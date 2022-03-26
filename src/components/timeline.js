@@ -13,6 +13,7 @@ const Timeline = ({ username }) => {
 
   const [messageList, setMessageList] = useState([]);
   const { currentUser } = useContext(UserContext);
+  // console.log('The current user data timeline',currentUser.email);
   const root = {
     display: 'flex',
     flexDirection: 'column',
@@ -47,9 +48,11 @@ const Timeline = ({ username }) => {
       })
   }, []);
 
+  const tweetCard = currentUser ? <TimelineTweetCard username={currentUser.email} /> : null;;
+
   return (
     <div style={root}>
-      <TimelineTweetCard username={username} />
+      {tweetCard}
       {messageList.map(element => (
         <Tweet
           key={`${element.username}-${element.description}`}
