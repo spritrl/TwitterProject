@@ -98,5 +98,4 @@ const Register = () => {
     </Grid>
   )
 }
-
 export default Register
