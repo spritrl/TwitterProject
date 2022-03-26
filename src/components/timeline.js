@@ -7,7 +7,7 @@ import 'firebase/compat/auth';
 import TimelineTweetCard from './timlineTweetCard';
 import Tweet from './tweet';
 
-const Timeline = ({ route, navigation }) => {
+const Timeline = ({ username }) => {
 
   const [messageList, setMessageList] = useState([]);
 
@@ -25,18 +25,29 @@ const Timeline = ({ route, navigation }) => {
 
   useEffect(() => {
     const db = firebase.firestore();
+    let tempList = [];
     db.collection('tweet')
       .get()
       .then(querySnapshot => {
         const documents = querySnapshot.docs.map(doc => doc.data())
-        setMessageList(documents);
-        console.warn('messageList', messageList);
+        tempList = documents;
+        return tempList;
+      })
+      .then(tempList => {
+        tempList.sort(function compare(a, b) {
+          var dateA = new Date(a.date);
+          var dateB = new Date(b.date);
+          return dateB - dateA;
+        });
+      })
+      .then(() => {
+        setMessageList(tempList)
       })
   }, []);
 
   return (
     <div style={root}>
-      <TimelineTweetCard />
+      <TimelineTweetCard username={username} />
       {messageList.map(element => (
         <Tweet
           key={`${element.username}-${element.description}`}

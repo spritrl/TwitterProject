@@ -17,7 +17,7 @@ const TimelineView = ({ route, navigation, username="toto" }) => {
       marginRight: 'auto',
     }}>
       <Navbar username={username} />
-      <Timeline />
+      <Timeline username={username} />
     </div >
   );
 };
