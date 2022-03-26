@@ -1,7 +1,10 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { Navigate, Outlet, useLocation } from 'react-router-dom';
 
 import Navbar from '../components/navbar';
 import Profile from '../components/profile';
+import { UserContext } from '../context/userContext';
+
 
 const ProfileView = ({ route, navigation, username="toto" }) => {
   const root = {

@@ -12,6 +12,7 @@ import 'firebase/compat/firestore';
 import 'firebase/compat/auth';
 import TimelineView from './views/timelineView';
 import ProfileView from './views/profileView';
+import Profile from './components/profile';
 // import { Routes, Route, Link } from "react-router-dom";
 // import Login from './components/Auth/Login/Login';
 // import Hold from './components/hold/Hold';
@@ -39,6 +40,7 @@ function App() {
         <Route path="auth" element={<Auth />}>
           <Route index element={<Login />} />
           <Route path="register" element={<Register />} />
+          <Route path="/private" element={<ProfileView />} />
         </Route>
       </Routes>
     </>

@@ -4,6 +4,7 @@ import LockIcon from '@mui/icons-material/Lock';
 import FormControl from '@mui/material/FormControl';
 import { UserContext } from '../../../context/userContext';
 import { async } from '@firebase/util';
+import { useNavigate } from 'react-router-dom';
 
 
 
@@ -26,14 +27,14 @@ const Register = () => {
   const textField = {
     padding: "10px 0"
   }
-// ! The useState varibale 
+// ! The useState variable 
   const [validation, setValidation] = useState()
 
 // !useRef variable
   const inputs = useRef([]);
   const formRef = useRef();
   // ! the other variables
- 
+  const navigate = useNavigate();
 
 //   !functions
 
@@ -62,6 +63,8 @@ const Register = () => {
       formRef.current.reset();
       setValidation("");
       console.log(cred);
+      navigate("/timeline");
+
     } catch (error) {
         console.dir(error);
         if (error.code === "auth/email-already-in-use") {
