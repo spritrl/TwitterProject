@@ -18,10 +18,11 @@ export function UserContextProvider(props) {
     const [loadingData, setLoadingData] = useState(true);
 
     const signUp = (email, psw)=> createUserWithEmailAndPassword(auth, email, psw)
-
+    const signIn = (email, psw)=> signInWithEmailAndPassword(auth, email, psw);
+    const signOut = ()=> auth.signOut();
 
     return (
-        <UserContext.Provider value={{signUp}}>
+        <UserContext.Provider value={{signUp, signOut, signIn}}>
             {props.children}
         </UserContext.Provider>
     )
