@@ -1,3 +1,4 @@
+import { ConstructionOutlined } from '@mui/icons-material';
 import React, { useContext } from 'react';
 import { Navigate, Outlet, useLocation } from 'react-router-dom';
 
@@ -7,6 +8,17 @@ import { UserContext } from '../context/userContext';
 
 
 const ProfileView = ({ route, navigation, username="toto" }) => {
+
+  // Use the context to get the user
+  const { currentUser } = useContext(UserContext);
+  console.log('The current user data',currentUser);
+
+  if(!currentUser) {
+    return (
+      <Navigate to="/auth" />
+    );
+  }
+
   const root = {
     display: 'flex',
     flexDirection: 'row',
@@ -18,7 +30,7 @@ const ProfileView = ({ route, navigation, username="toto" }) => {
   }
   return (
     <div style={root}>
-      <Navbar username={username} />
+      <Navbar username={currentUser} />
       <Profile />
     </div >
   );
