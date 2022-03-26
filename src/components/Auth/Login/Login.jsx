@@ -43,7 +43,7 @@ const Login = () => {
               <TextField name='psw' style={textField} label='Password' placeholder='Enter password' type='password' fullWidth required/>
               <FormControlLabel control={<Checkbox  />} label="Remember me" />
               <Button style={button} fullWidth type='submit' variant="contained">Sign in</Button>
-              <Link style={link} to="register">Register</Link>
+              <Link style={link} to="register">Sign Up</Link>
             </FormControl>
         </Paper>
     </Grid>

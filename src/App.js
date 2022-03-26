@@ -34,13 +34,13 @@ function App() {
   return (
     <>
       <Routes>
-        <Route path="/" element={<Hold />} />
-        <Route path="/timeline" element={<TimelineView />} />
-        <Route path="/profile" element={<ProfileView />} />
+        {/* <Route path="/" element={<Hold />} /> */}
+        <Route path="/" element={<TimelineView />} />
+        {/* <Route path="/profile" element={<ProfileView />} /> */}
         <Route path="auth" element={<Auth />}>
           <Route index element={<Login />} />
           <Route path="register" element={<Register />} />
-          <Route path="/private" element={<ProfileView />} />
+          <Route path="profile" element={<ProfileView />} />
         </Route>
       </Routes>
     </>

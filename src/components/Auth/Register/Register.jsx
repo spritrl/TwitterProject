@@ -4,7 +4,7 @@ import LockIcon from '@mui/icons-material/Lock';
 import FormControl from '@mui/material/FormControl';
 import { UserContext } from '../../../context/userContext';
 import { async } from '@firebase/util';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 
 
@@ -63,8 +63,7 @@ const Register = () => {
       formRef.current.reset();
       setValidation("");
       console.log(cred);
-      navigate("/timeline");
-
+      navigate("/auth/profile");
     } catch (error) {
         console.dir(error);
         if (error.code === "auth/email-already-in-use") {
@@ -75,26 +74,28 @@ const Register = () => {
     } 
   }
   
-  
+  const link = {
+    textDecoration: 'none',
+    padding: "20px auto",
+    color: "blue"
+  }
+  const button = {
+    margin:"20px 0"
+  }
   return (
     <Grid>
         <Paper elevation={10} style={paperStyle}>
             <Grid align='center'>
                 <Avatar style={avatarStyle}><LockIcon/></Avatar>
-                <h2>Register</h2>
+                <h2>Sign Up</h2>
             </Grid>
-                   {/* <FormControl>
-                    <InputLabel htmlFor="my-input">Email address</InputLabel>
-                    <Input id="my-input" aria-describedby="my-helper-text" />
-                    <FormHelperText id="my-helper-text">We'll never share your email.</FormHelperText>
-                </FormControl> */}
             <form ref={formRef} onSubmit={handelForm}>
                 <TextField inputRef={addInputs} name='username' style={textField} label='Username' placeholder='Enter mail OR username' fullWidth required/>
                 <TextField inputRef={addInputs} name='psw' style={textField} label='Password' placeholder='Enter password' type='password' fullWidth required/>
                 <TextField inputRef={addInputs} name='repeatPwd' style={textField} label='Repeat password' placeholder='Enter password' type='password' fullWidth required/>
                 <p style={{color:'red'}}>{validation}</p>
-                {/* <FormControlLabel control={<Checkbox  />} label="Remember me" /> */}
-                <Button fullWidth type='submit' variant="contained">Sign in</Button>
+                <Button style={button} fullWidth type='submit' variant="contained">Sign Up</Button>
+                <Link style={link} to="/auth">Sign In</Link>
             </form>
 
         </Paper>
