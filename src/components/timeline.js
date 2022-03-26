@@ -36,7 +36,6 @@ const Timeline = ({ username }) => {
       .then(tempList => {
         tempList.sort(function compare(a, b) {
           var dateA = new Date(a.date);
-          console.warn(dateA);
           var dateB = new Date(b.date);
           return dateB - dateA;
         });
