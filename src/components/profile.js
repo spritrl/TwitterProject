@@ -69,7 +69,7 @@ const Profile = ({userData}) => {
   };
 
   let query = useQuery();
-  let username = query.get("username");
+  let username = userData.email;
 
   useEffect(() => {
     const db = firebase.firestore();
