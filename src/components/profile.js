@@ -14,7 +14,7 @@ import TimelineTweetCard from './timlineTweetCard';
 import PersonalProfileCard from './personalProfileCard'
 import Tweet from './tweet';
 
-const Profile = () => {
+const Profile = ({userData}) => {
   const root = {
     display: 'flex',
     flexDirection: 'column',
@@ -106,7 +106,7 @@ const Profile = () => {
           <a style={tweetNumber}>{messageList.length} Tweets</a>
         </div>
       </div>
-      <PersonalProfileCard username={username}/>
+      <PersonalProfileCard username={userData.email}/>
       {messageList.map(element => (
         <Tweet
           key={`${element.username}-${element.description}`}

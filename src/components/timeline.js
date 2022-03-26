@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 
 import firebase from 'firebase/compat/app';
 import 'firebase/compat/firestore';
@@ -6,11 +6,13 @@ import 'firebase/compat/auth';
 
 import TimelineTweetCard from './timlineTweetCard';
 import Tweet from './tweet';
+import { UserContext } from '../context/userContext';
+
 
 const Timeline = ({ route, navigation }) => {
 
   const [messageList, setMessageList] = useState([]);
-
+  const { currentUser } = useContext(UserContext);
   const root = {
     display: 'flex',
     flexDirection: 'column',

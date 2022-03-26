@@ -11,7 +11,7 @@ const ProfileView = ({ route, navigation, username="toto" }) => {
 
   // Use the context to get the user
   const { currentUser } = useContext(UserContext);
-  console.log('The current user data',currentUser);
+  console.log('The current user data',currentUser.email);
 
   if(!currentUser) {
     return (
@@ -31,7 +31,7 @@ const ProfileView = ({ route, navigation, username="toto" }) => {
   return (
     <div style={root}>
       <Navbar username={currentUser} />
-      <Profile />
+      <Profile userData={currentUser} />
     </div >
   );
 };

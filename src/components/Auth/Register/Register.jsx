@@ -97,9 +97,8 @@ const Register = () => {
                 <Button style={button} fullWidth type='submit' variant="contained">Sign Up</Button>
                 <Link style={link} to="/auth">Sign In</Link>
             </form>
-
         </Paper>
     </Grid>
   )
-}
+}  
 export default Register
