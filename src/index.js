@@ -3,22 +3,13 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import { BrowserRouter } from "react-router-dom";
-import { UserContextProvider } from './context/userContext';
 import firebase from 'firebase/compat/app';
 import 'firebase/compat/firestore';
 import 'firebase/compat/auth';
 import { BrowserRouter } from "react-router-dom";
 import { UserContextProvider } from './context/userContext';
+import firebaseConfig from './firebase.config';
 
-const firebaseConfig = {
-  apiKey: "AIzaSyAPcYoBvdB2yO6KBgQTJuNZDvaH2iqurDM",
-  authDomain: "twitter-project-d5bb4.firebaseapp.com",
-  projectId: "twitter-project-d5bb4",
-  storageBucket: "twitter-project-d5bb4.appspot.com",
-  messagingSenderId: "730874699464",
-  appId: "1:730874699464:web:115e1f546ebf4008914ffd"
-};
 
 firebase.initializeApp(firebaseConfig);
 ReactDOM.render(
