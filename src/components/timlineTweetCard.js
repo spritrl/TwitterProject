@@ -1,6 +1,11 @@
+import React, { useRef } from 'react';
 import { Button, Input } from "@material-ui/core";
 
-const TimelineTweetCard = ({ route, navigation }) => {
+import firebase from 'firebase/compat/app';
+import 'firebase/compat/firestore';
+import 'firebase/compat/auth';
+
+const TimelineTweetCard = ({ username }) => {
 
   const topCard = {
     display: 'flex',
@@ -65,6 +70,28 @@ const TimelineTweetCard = ({ route, navigation }) => {
     textTransform: 'none',
   };
 
+  const inputRef = useRef('');
+
+  const createNewTweet = () => {
+    const db = firebase.firestore();
+    const today = new Date();
+    const dateValue = 
+      today.getFullYear() + '-' +
+      (today.getMonth()+1)+ '-' +
+      today.getDate() + ' ' +
+      today.getHours() + ":" +
+      today.getMinutes() + ":" +
+      today.getSeconds();
+    console.warn(inputRef.current.value);
+    if (inputRef.current.value != '') {
+      db.collection('tweet').add({
+        description: inputRef.current.value,
+        username: username,
+        date: dateValue,
+      })
+      inputRef.current.value = '';
+    }
+  }
 
   return (
     <>
@@ -72,12 +99,15 @@ const TimelineTweetCard = ({ route, navigation }) => {
       <div style={topCard} >
         <div style={tweetArea}>
           <img src="https://pbs.twimg.com/profile_images/3146747625/c57128ccade4faa5f28419771a7156f0_400x400.png" style={profilePicture} />
-          <Input style={textArea} placeholder="What's up?"
+          <Input
+            inputRef={inputRef} 
+            style={textArea}
+            placeholder="What's up?"
             disableUnderline={true} />
           <div style={bottomBar}>
           </div>
         </div>
-        <Button style={tweetButton}>
+        <Button style={tweetButton} onClick={createNewTweet}>
           <a style={text}>Tweet</a>
         </Button>
       </div >
