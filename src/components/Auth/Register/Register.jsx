@@ -64,7 +64,7 @@ const Register = () => {
       formRef.current.reset();
       setValidation("");
       console.log(cred);
-      navigate("/auth/profile");
+      navigate(`/auth/profile?username=${cred.user.email}`);
     } catch (error) {
         console.dir(error);
         if (error.code === "auth/email-already-in-use") {
