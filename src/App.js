@@ -25,6 +25,7 @@ function App() {
         console.warn(documents);
       })
   }, []);
+  const { currentUser } = useContext(UserContext);
 
   return (
     <>
