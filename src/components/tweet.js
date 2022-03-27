@@ -67,7 +67,10 @@ const Tweet = ({ usernameInfo, textInfo }) => {
   const getUserName = (email) => {
     let name = email;
     const index = name.indexOf('@');
-    name = name.slice(0, index);
+    if (index !== -1) {
+      name = name.slice(0, index);
+    }
+    // name = name.slice(0, index);
     return name;
   }
 

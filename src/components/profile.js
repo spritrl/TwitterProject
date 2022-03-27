@@ -73,7 +73,9 @@ const Profile = ({userData}) => {
   const getUserName = (email) => {
     let name = email;
     const index = name.indexOf('@');
-    name = name.slice(0, index);
+    if (index !== -1) {
+      name = name.slice(0, index);
+    }
     return name;
   }
 
@@ -124,7 +126,7 @@ console.log(username);
       {messageList.map(element => (
         <Tweet
           key={`${element.username}-${element.description}`}
-          usernameInfo={getUserName(element.username)}
+          usernameInfo={getUserName(filterUserName)}
           textInfo={element.description}
         />
       ))}
