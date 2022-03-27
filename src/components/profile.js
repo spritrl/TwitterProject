@@ -78,7 +78,9 @@ const Profile = ({userData}) => {
   }
 
   let query = useQuery();
-  let username = userData.email;
+  let username = query.get("username");
+console.log(username);
+  // let username = userData.email;
   let filterUserName = getUserName(username);
 
 

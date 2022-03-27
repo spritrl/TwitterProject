@@ -26,6 +26,8 @@ const Timeline = ({ username }) => {
     color: 'white',
   };
 
+
+
   useEffect(() => {
     const db = firebase.firestore();
     let tempList = [];
