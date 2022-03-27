@@ -58,7 +58,7 @@ try {
   // formRef.current.reset();
   setValidation("");
   console.log(cred);
-  navigate("/auth/profile");
+  navigate(`/auth/profile?username=${cred.user.email}`);
 } catch (error) {
     console.dir(error);
     setValidation("Wrong credentials");
@@ -68,7 +68,7 @@ try {
 const link = {
 textDecoration: 'none',
 padding: "20px auto",
-color: "#fafaff"
+color: "blue"
 }
 const button = {
 margin:"20px 0"
