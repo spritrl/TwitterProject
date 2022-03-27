@@ -5,6 +5,7 @@ import FormControl from '@mui/material/FormControl';
 import { UserContext } from '../../../context/userContext';
 import { async } from '@firebase/util';
 import { Link, useNavigate } from 'react-router-dom';
+import { styled } from '@material-ui/core';
 
 
 
@@ -18,7 +19,7 @@ const Register = () => {
   const paperStyle = {
       padding: 20,
       height: '70vh',
-      width: 280,
+      width: 400,
       margin: "20px auto"
   }
   const avatarStyle = {
@@ -82,12 +83,16 @@ const Register = () => {
   const button = {
     margin:"20px 0"
   }
+  const MyTitle = styled('h2')({
+    color: 'black',
+  });
+  
   return (
     <Grid>
         <Paper elevation={10} style={paperStyle}>
             <Grid align='center'>
                 <Avatar style={avatarStyle}><LockIcon/></Avatar>
-                <h2>Sign Up</h2>
+                <MyTitle>Sign Up</MyTitle>
             </Grid>
             <form ref={formRef} onSubmit={handelForm}>
                 <TextField inputRef={addInputs} name='username' style={textField} label='Username' placeholder='Enter mail OR username' fullWidth required/>

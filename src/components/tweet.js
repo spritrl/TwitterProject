@@ -64,6 +64,13 @@ const Tweet = ({ usernameInfo, textInfo }) => {
     fontSize: 15,
   };
 
+  const getUserName = (email) => {
+    let name = email;
+    const index = name.indexOf('@');
+    name = name.slice(0, index);
+    return name;
+  }
+
   return (
     <div style={root}>
       <div style={tweetArea}>
@@ -72,8 +79,8 @@ const Tweet = ({ usernameInfo, textInfo }) => {
         </Button>
         <div style={content}>
           <div style={userInfo}>
-            <a style={username}>{usernameInfo}</a>
-            <a style={usernameAt}>@{usernameInfo}</a>
+            <a style={username}>{getUserName(usernameInfo)}</a>
+            <a style={usernameAt}>@{getUserName(usernameInfo)}</a>
           </div>
           <a style={text}>{textInfo}</a>
         </div>
