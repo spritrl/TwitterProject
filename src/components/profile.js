@@ -15,6 +15,8 @@ import PersonalProfileCard from './personalProfileCard'
 import Tweet from './tweet';
 
 const Profile = ({userData}) => {
+
+ 
   const root = {
     display: 'flex',
     flexDirection: 'column',
@@ -68,8 +70,18 @@ const Profile = ({userData}) => {
     return React.useMemo(() => new URLSearchParams(search), [search]);
   };
 
+  const getUserName = (email) => {
+    let name = email;
+    const index = name.indexOf('@');
+    name = name.slice(0, index);
+    return name;
+  }
+
   let query = useQuery();
   let username = userData.email;
+  let filterUserName = getUserName(username);
+
+
 
   useEffect(() => {
     const db = firebase.firestore();
@@ -102,15 +114,15 @@ const Profile = ({userData}) => {
           </SvgIcon>
         </Button>
         <div style={usernameTopSection}>
-          <a style={usernameTop}>{username}</a>
+          <a style={usernameTop}>{filterUserName}</a>
           <a style={tweetNumber}>{messageList.length} Tweets</a>
         </div>
       </div>
-      <PersonalProfileCard username={userData.email}/>
+      <PersonalProfileCard email={userData.email} username={filterUserName}/>
       {messageList.map(element => (
         <Tweet
           key={`${element.username}-${element.description}`}
-          usernameInfo={element.username}
+          usernameInfo={getUserName(element.username)}
           textInfo={element.description}
         />
       ))}
