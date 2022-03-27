@@ -3,7 +3,7 @@ import { Button } from "@material-ui/core";
 import Navbar from '../components/navbar';
 import Profile from '../components/profile';
 
-const PersonalProfileCard = ({ username }) => {
+const PersonalProfileCard = ({ username, email }) => {
   const root = {
     width: '100%',
     height: 424,
